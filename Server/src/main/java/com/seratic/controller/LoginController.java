@@ -7,6 +7,7 @@ package com.seratic.controller;
 
 import com.seratic.models.Conexion;
 import com.seratic.models.Usuario;
+import com.seratic.models.Util;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -54,7 +55,8 @@ public class LoginController {
                                 BindingResult result,
                                 SessionStatus status,HttpServletRequest hsr){         
         HttpSession session = hsr.getSession();
-        String sql="SELECT * FROM usuario WHERE usuario='"+u.getUsuario()+"' AND clave='"+u.getClave()+"' AND tipo='administrador'";
+        String pass = Util.Encriptar(u.getClave());
+        String sql="SELECT * FROM usuario WHERE usuario='"+u.getUsuario()+"' AND clave='"+pass+"' AND tipo='administrador'";
         List datos = this.jdbcTemplate.queryForList(sql);
         if (datos.size() > 0){            
             session.setAttribute("session", "si");

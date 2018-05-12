@@ -1,12 +1,10 @@
-package com.seratic.controller.user;
+package com.seratic.controller.player;
 
 import com.seratic.models.Conexion;
-import com.seratic.models.Usuario;
-import com.seratic.models.Util;
+import com.seratic.models.Jugador;
 import java.util.Date;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,32 +14,29 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("adduser.htm")
-public class AddUserController {
+@RequestMapping("addplayer.htm")
+public class AddPlayerController {
     private JdbcTemplate jdbcTemplate;
 
-    public AddUserController() {
+    public AddPlayerController() {
         Conexion con = new Conexion();
         this.jdbcTemplate = new JdbcTemplate(con.conectar());
     }
     @GetMapping
-    public ModelAndView adduser(){        
+    public ModelAndView addplayer(){        
        ModelAndView mav = new ModelAndView();
-       mav.setViewName("usuario/adduser");
-       mav.addObject("usuario", new Usuario());       
+       mav.setViewName("jugador/addplayer");
+       mav.addObject("jugador", new Jugador());       
        return mav; 
     }
     
     @PostMapping
-    public ModelAndView adduser (@ModelAttribute("usuario") Usuario u,
+    public ModelAndView addplayer (@ModelAttribute("usuario") Jugador j,
                                 BindingResult result,
-                                SessionStatus status){
-        Date fecha = new Date();
-        String pass = Util.Encriptar(u.getClave());//Encrypto la contraseña
+                                SessionStatus status){       
             this.jdbcTemplate.update(
-                        "INSERT INTO usuario (cedula,nombre,apellido,usuario,clave,tipo,fecha) VALUES (?,?,?,?,?,?,?)",
-                        u.getCedula(),u.getNombre(),u.getApellido(),u.getUsuario(),pass,u.getTipo(),fecha);
-            return new ModelAndView("redirect:/user.htm");        
+                        "INSERT INTO jugador (nombre,apellido,club) VALUES (?,?,?)",
+                        j.getNombre(),j.getApellido(),j.getClub());
+            return new ModelAndView("redirect:/player.htm");        
     }
-    
 }

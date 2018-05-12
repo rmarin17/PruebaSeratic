@@ -34,49 +34,28 @@
         </nav>
         <div class="container">
             <br/>
-            <center><h4 style="color:teal">Registrar Usuario</h4></center>
+            <center><h4 style="color:teal">Registrar Jugador</h4></center>
             <br/>
-            <form:form method="post" modelAttribute="usuario">                           
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <form:input id="icon_prefix" path="cedula" type="text" class="validate" required="true" aria-required="true"/>
-                        <form:label for="icon_prefix" path="cedula">Cedula</form:label>                        
-                    </div>
+            <form:form method="post" modelAttribute="jugador">                           
+                <div class="row">                    
                     <div class="input-field col s6">
                         <i class="material-icons prefix">person</i>
                         <form:input id="icon_prefix" path="nombre" type="text" class="validate" required="true" aria-required="true"/>
                         <form:label for="icon_prefix" path="nombre">Nombre</form:label>                        
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">person</i>
                         <form:input id="icon_prefix" path="apellido" type="text" class="validate" required="true" aria-required="true"/>
                         <form:label for="icon_prefix" path="apellido">Apellido</form:label>                        
-                    </div>                    
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix" >account_circle</i>
-                        <form:input id="icon_prefix" path="usuario" type="text" class="validate" required="true" aria-required="true"/>
-                        <form:label for="icon_prefix" path="usuario">Usuario</form:label> 
                     </div>
-                                                
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <i class="material-icons prefix" >lock_outline</i>
-                        <form:input id="icon_prefix" path="clave" type="password" class="validate" required="true" aria-required="true"/>
-                        <form:label for="icon_prefix" path="clave">Contraseña</form:label>                         
-                    </div>  
-                    <div class="input-field col s6">                       
-                            <form:select path="tipo">                                
-                                <form:option value="none" disabled="true" selected="true">Selecciona</form:option>                                                                 
-                                <form:option  value="administrador">Adminitrador</form:option>  
-                                <form:option  value="basico">Basico</form:option>  
-                            </form:select>
-                            <label>Seleccione el Tipo de Usuario</label>
-                    </div>                                                                           
-                </div>
+                        <i class="material-icons prefix"></i>
+                        <form:input id="icon_prefix" path="club" type="text" class="validate" required="true" aria-required="true"/>
+                        <form:label for="icon_prefix" path="club">Club donde Juega</form:label>                        
+                    </div>                                                                                        
+                </div>                
                 <br></br>
                 <center><button class="waves-effect waves-yellow btn black" type="submit" name="submit">Agregar</button></center>
             </form:form>                                                                    

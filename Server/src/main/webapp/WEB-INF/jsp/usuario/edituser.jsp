@@ -58,7 +58,7 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix" >lock_outline</i>
-                        <form:input id="icon_prefix" path="clave" type="text" class="validate" required="true" aria-required="true"/>
+                        <form:input id="icon_prefix" path="clave" type="password" class="validate" required="true" aria-required="true"/>
                         <form:label for="icon_prefix" path="clave">Contraseña</form:label>                         
                     </div>
                                                 
@@ -72,7 +72,12 @@
                                 <form:option  value="basico">Basico</form:option>  
                             </form:select>
                             <label>Seleccione el Tipo de Usuario</label>
-                    </div>                       
+                    </div> 
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix" >date_range</i>
+                        <form:input id="icon_prefix" path="fecha" type="text" class="validate" required="true" aria-required="true"/>
+                        <form:label for="icon_prefix" path="fecha">Fecha de Registro (AAAA-MM-DD HH:MM:SS)</form:label>                         
+                    </div> 
                 </div>                
                 <br></br>
                 <center><button class="waves-effect waves-yellow btn black" type="submit" name="submit">Actualizar</button></center>

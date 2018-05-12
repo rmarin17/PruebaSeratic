@@ -7,6 +7,7 @@ package com.seratic.controller.user;
 
 import com.seratic.models.Conexion;
 import com.seratic.models.Usuario;
+import com.seratic.models.Util;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,12 +34,13 @@ public class EditUserController {
     }
     
     @GetMapping
-    public ModelAndView edituser(HttpServletRequest request){
+    public ModelAndView edituser(HttpServletRequest request) throws Exception{
         ModelAndView mav = new ModelAndView();
         String id=request.getParameter("id");
         Usuario datos = this.selectUser(id);
+        String desencriptado = Util.Desencriptar(datos.getClave());//desencripto la contraseña
         mav.setViewName("usuario/edituser");
-        mav.addObject("usuario",new Usuario(id,datos.getNombre(),datos.getApellido(),datos.getUsuario(),datos.getClave(),datos.getTipo(),datos.getFecha()));
+        mav.addObject("usuario",new Usuario(id,datos.getNombre(),datos.getApellido(),datos.getUsuario(),desencriptado,datos.getTipo(),datos.getFecha()));
         return mav;
     }
     
@@ -47,7 +49,7 @@ public class EditUserController {
                                 BindingResult result,
                                 SessionStatus status,
                                 HttpServletRequest request){
-               
+            String pass = Util.Encriptar(u.getClave());   
             String id=request.getParameter("id");
             this.jdbcTemplate.update(
                     "UPDATE usuario "
@@ -55,10 +57,11 @@ public class EditUserController {
                     + "apellido=?,"
                     + "usuario=?,"
                     + "clave=?,"
-                    + "tipo=?"                              
+                    + "tipo=?,"
+                    + "fecha=?"
                     + "where "
                     + "cedula=?",                    
-                    u.getNombre(), u.getApellido(),u.getUsuario(),u.getClave(),u.getTipo(),id);
+                    u.getNombre(), u.getApellido(),u.getUsuario(),pass,u.getTipo(),u.getFecha(),id);
             return new ModelAndView("redirect:/user.htm");
         
     }
@@ -74,7 +77,8 @@ public class EditUserController {
                     user.setApellido(rs.getString("apellido"));
                     user.setUsuario(rs.getString("usuario"));
                     user.setClave(rs.getString("clave"));
-                    user.setTipo(rs.getString("tipo"));                                   
+                    user.setTipo(rs.getString("tipo")); 
+                    user.setFecha(rs.getString("fecha"));
                 }
                 return user;
             }

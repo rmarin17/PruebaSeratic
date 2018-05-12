@@ -37,14 +37,10 @@
                 <br/> 
                     <table id="tabla" class="highlight centered responsive-table">  
                         <thead>                          
-                            <tr>
-                                <th>cedula</th>
+                            <tr>                                
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Usuario</th>
-                                <th>Clave</th>
-                                <th>Tipo</th>  
-                                <th>Fecha de Registro</th>  
+                                <th>Club</th>                                  
                                 <th></th>
                                 <th></th>
                             </tr> 
@@ -52,27 +48,23 @@
                                               
                         
                         <tbody> 
-                            <c:forEach items="${usuarios}" var="usuarios">  
-                            <tr>                                                                        
-                                <td><c:out value="${usuarios.cedula}" /></td>
-                                <td><c:out value="${usuarios.nombre}" /></td>
-                                <td><c:out value="${usuarios.apellido}" /></td>
-                                <td><c:out value="${usuarios.usuario}" /></td>
-                                <td><c:out value="${usuarios.clave}" /></td>
-                                <td><c:out value="${usuarios.tipo}" /></td>   
-                                <td><c:out value="${usuarios.fecha}" /></td> 
-                                <td><a title="Eliminar" href="#modal<c:out value="${usuarios.cedula}" />" class="modal-trigger"><i Style="color:red;" class="material-icons">delete</i></a></td>  
-                                <td><a title="Editar" href="<c:url value="edituser.htm?id=${usuarios.cedula}"/>"><i Style="color:#546e7a;" class="material-icons">edit</i></a></td>                                        
+                            <c:forEach items="${jugadores}" var="jugadores">  
+                            <tr>                                                                                                       
+                                <td><c:out value="${jugadores.nombre}" /></td>
+                                <td><c:out value="${jugadores.apellido}" /></td>
+                                <td><c:out value="${jugadores.club}" /></td>
+                                <td><a title="Eliminar" href="#modal<c:out value="${jugadores.id}" />" class="modal-trigger"><i Style="color:red;" class="material-icons">delete</i></a></td>  
+                                <td><a title="Editar" href="<c:url value="editplayer.htm?id=${jugadores.id}"/>"><i Style="color:#546e7a;" class="material-icons">edit</i></a></td>                                        
                             </tr>
                             <!-- Modal Structure -->                    
-                            <div id="modal<c:out value="${usuarios.cedula}" />" class="modal">
+                            <div id="modal<c:out value="${jugadores.id}" />" class="modal">
                                 <div class="modal-content">
                                 <h4>Eliminar</h4>
                                 <p>Recuerde que se borrara el evento seleccionado y una vez completada la acción no se podrán volver a recuperar, ¿está seguro de eliminar el evento?</p>
                                 </div>
                                 <div class="modal-footer">
                                 <a class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                                <a href="<c:url value="deluser.htm?id=${usuarios.cedula}" />" class="modal-action modal-close waves-effect waves-green btn-flat">Si</a>                        
+                                <a href="<c:url value="delplayer.htm?id=${jugadores.id}" />" class="modal-action modal-close waves-effect waves-green btn-flat">Si</a>                        
                                 </div>                        
                             </div>    
                             </c:forEach>
@@ -82,7 +74,7 @@
                     <br/>    
                     <div class="row">                        
                         <div class="col s12">                    
-                            <center><a href="adduser.htm"  class="modal-trigger btn-large waves-effect waves-yellow green"><i class="material-icons left">add_circle</i>Agregar Usuario</a></center>
+                            <center><a href="addplayer.htm"  class="modal-trigger btn-large waves-effect waves-yellow green"><i class="material-icons left">add_circle</i>Agregar Jugador</a></center>
                         </div>
                     </div>
                                                                    

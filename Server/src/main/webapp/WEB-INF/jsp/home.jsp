@@ -53,7 +53,7 @@
                 </div>
                 
                 <div class="col s m4">
-                  <div class="card hoverable medium" onclick="location.href='players.htm'">
+                  <div class="card hoverable medium" onclick="location.href='player.htm'">
                     <div class="card-image">
                       <img src="<c:url value='/images/jugadores.jpg'/>">
                     </div>
@@ -61,7 +61,7 @@
                       <p align="justify">Gestion los aspectos de tus jugadores</p>
                     </div>
                     <div class="card-action">
-                      <center><a href="players.htm">Jugadores</a><center>
+                      <center><a href="player.htm">Jugadores</a><center>
                     </div>
                   </div>
                 </div>
