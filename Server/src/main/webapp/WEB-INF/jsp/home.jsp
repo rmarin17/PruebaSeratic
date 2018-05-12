@@ -37,7 +37,9 @@
         <div class="container"> 
             <br/>
             <div class="row" align="center">
-                
+                <br/>
+                <center><h3 style="color:teal">Seratic Recomendaciones Selección Colombia</h3></center>
+                <br/>
                 <div class="col s m4">
                   <div class="card hoverable medium"  onclick="location.href='user.htm'">
                     <div class="card-image">

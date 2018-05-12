@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Seratic</string>
+    <string name="login_title">Inicio de Sesión</string>
+    <string name="login_user">Nombre de Usuario</string>
+    <string name="login_pass">Contraseña</string>
+    <string name="regis_user">Registrarse</string>
+    <string name="login_ini">Ingresar</string>
+    <string name="login_validate">Validando Información</string>
+    <string name="login_user_error">Nombre de usuario o contraseña incorrectos</string>
+    <string name="regis_cedula">Cedula</string>
+    <string name="regis_name">Nombre</string>
+    <string name="regis_last">Apellido</string>
+    <string name="regis_username">Nombre de Usuario</string>
+    <string name="regis_pass">Contraseña</string>
+    <string name="regis">Registar</string>
+    <string name="regis_validate">Enviando Información</string>
+    <string name="regis_error">Por favor comprueba los datos</string>
+</resources>
