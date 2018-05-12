@@ -15,4 +15,6 @@
     <string name="regis">Registar</string>
     <string name="regis_validate">Enviando Información</string>
     <string name="regis_error">Por favor comprueba los datos</string>
+    <string name="player_equipo">Club Donde Juega:</string>
+
 </resources>

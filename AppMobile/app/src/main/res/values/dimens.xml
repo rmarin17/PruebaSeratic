@@ -3,4 +3,5 @@
     <dimen name="img_login">200dp</dimen>
     <dimen name="icon_login">40dp</dimen>
     <dimen name="cardelevation">10dp</dimen>
+    <dimen name="dimen_icon">30dp</dimen>
 </resources>
