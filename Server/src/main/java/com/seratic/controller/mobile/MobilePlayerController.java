@@ -24,7 +24,8 @@ public class MobilePlayerController {
     public List<Jugador> getPlayer(){
         String sql="SELECT * FROM jugador";
         List datos = this.jdbcTemplate.queryForList(sql);
-        List<Jugador> list = datos;        
+        List<Jugador> list = datos;                    
+        
         return list;
     }
     
