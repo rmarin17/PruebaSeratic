@@ -4,6 +4,8 @@ import com.seratic.models.Conexion;
 import com.seratic.models.Usuario;
 import com.seratic.models.Util;
 import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
@@ -25,11 +27,19 @@ public class AddUserController {
         this.jdbcTemplate = new JdbcTemplate(con.conectar());
     }
     @GetMapping
-    public ModelAndView adduser(){        
-       ModelAndView mav = new ModelAndView();
-       mav.setViewName("usuario/adduser");
-       mav.addObject("usuario", new Usuario());       
-       return mav; 
+    public ModelAndView adduser(HttpServletRequest hsr){   
+        HttpSession session = hsr.getSession();
+        String sesion = (String)session.getAttribute("session");
+        if (sesion == "si"){
+            ModelAndView mav = new ModelAndView();
+            mav.setViewName("usuario/adduser");
+            mav.addObject("usuario", new Usuario());       
+            return mav;   
+       } else {
+            return new ModelAndView("redirect:/login.htm");  
+       }   
+        
+        
     }
     
     @PostMapping

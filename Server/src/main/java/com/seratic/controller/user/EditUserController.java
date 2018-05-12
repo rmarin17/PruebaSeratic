@@ -10,7 +10,9 @@ import com.seratic.models.Usuario;
 import com.seratic.models.Util;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -35,13 +37,22 @@ public class EditUserController {
     
     @GetMapping
     public ModelAndView edituser(HttpServletRequest request) throws Exception{
-        ModelAndView mav = new ModelAndView();
-        String id=request.getParameter("id");
-        Usuario datos = this.selectUser(id);
-        String desencriptado = Util.Desencriptar(datos.getClave());//desencripto la contraseña
-        mav.setViewName("usuario/edituser");
-        mav.addObject("usuario",new Usuario(id,datos.getNombre(),datos.getApellido(),datos.getUsuario(),desencriptado,datos.getTipo(),datos.getFecha()));
-        return mav;
+        HttpSession session = request.getSession();
+        String sesion = (String)session.getAttribute("session");
+        
+        if (sesion == "si"){
+            ModelAndView mav = new ModelAndView();
+            String id=request.getParameter("id");
+            Usuario datos = this.selectUser(id);
+            String desencriptado = Util.Desencriptar(datos.getClave());//desencripto la contraseña
+            mav.setViewName("usuario/edituser");
+            mav.addObject("usuario",new Usuario(id,datos.getNombre(),datos.getApellido(),datos.getUsuario(),desencriptado,datos.getTipo(),datos.getFecha()));
+            return mav;  
+       } else {
+            return new ModelAndView("redirect:/login.htm");  
+       }    
+        
+        
     }
     
     @PostMapping

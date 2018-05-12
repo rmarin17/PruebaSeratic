@@ -6,6 +6,7 @@ import com.seratic.models.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -30,12 +31,20 @@ public class EditPlayerController {
     
     @GetMapping
     public ModelAndView editplayer(HttpServletRequest request){
-        ModelAndView mav = new ModelAndView();
+        HttpSession session = request.getSession();
+        String sesion = (String)session.getAttribute("session");
+        
+        if (sesion == "si"){
+            ModelAndView mav = new ModelAndView();
         int id=Integer.parseInt(request.getParameter("id"));
         Jugador datos = this.selectPlayer(id);
         mav.setViewName("jugador/editplayer");
         mav.addObject("jugador",new Jugador(id,datos.getNombre(),datos.getApellido(),datos.getClub()));
         return mav;
+        } else {
+             return new ModelAndView("redirect:/login.htm");  
+        }   
+        
     }
     
     @PostMapping

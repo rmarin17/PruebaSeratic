@@ -2,7 +2,10 @@ package com.seratic.controller.player;
 
 import com.seratic.models.Conexion;
 import com.seratic.models.Jugador;
+import com.seratic.models.Usuario;
 import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -23,11 +26,19 @@ public class AddPlayerController {
         this.jdbcTemplate = new JdbcTemplate(con.conectar());
     }
     @GetMapping
-    public ModelAndView addplayer(){        
-       ModelAndView mav = new ModelAndView();
-       mav.setViewName("jugador/addplayer");
-       mav.addObject("jugador", new Jugador());       
-       return mav; 
+    public ModelAndView addplayer(HttpServletRequest hsr){   
+        HttpSession session = hsr.getSession();
+        String sesion = (String)session.getAttribute("session");
+        
+        if (sesion == "si"){
+            ModelAndView mav = new ModelAndView();
+            mav.setViewName("jugador/addplayer");
+            mav.addObject("jugador", new Jugador());       
+            return mav;   
+       } else {
+            return new ModelAndView("redirect:/login.htm");  
+       }   
+        
     }
     
     @PostMapping
