@@ -19,6 +19,7 @@ import retrofit2.Callback;
 public class Login extends AppCompatActivity implements Callback<Response> {
 
     ActivityLoginBinding binding;
+    String user = "";
 
     UserClient client;
     SharedPreferences preferences; //se utiliza sharepreferences para el mantenimiento de sesion
@@ -51,6 +52,7 @@ public class Login extends AppCompatActivity implements Callback<Response> {
 
     public void login(){
         String usuario =  binding.user.getText().toString();
+        user = usuario;
         String clave =  binding.pass.getText().toString();//la cave la autentica el servidor
         Usuario user = new Usuario(usuario, clave);
 
@@ -65,6 +67,7 @@ public class Login extends AppCompatActivity implements Callback<Response> {
         if(res.isExitoso()){
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean("session", true);
+            editor.putString("user", user);
             editor.apply();
             Intent intent = new Intent(this, Players.class);
             startActivity(intent);

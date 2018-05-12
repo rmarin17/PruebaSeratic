@@ -44,45 +44,53 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
+                    android:layout_marginTop="16dp"
                     android:text="@{player.nombre+' '+player.apellido}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Titulo Evento" />
+                    tools:text="@string/player_name" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/player_equipo"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@{player.club}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView10"
                     app:layout_constraintTop_toBottomOf="@+id/hora"
                     tools:text="@string/player_equipo" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="@dimen/icon_login"
+                    android:layout_height="@dimen/icon_login"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{player.club}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/hora"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    tools:text="@string/player_equipo" />
+                    app:layout_constraintTop_toTopOf="@+id/hora"
+                    app:srcCompat="@drawable/ic_player" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="@dimen/icon_login"
+                    android:layout_height="@dimen/icon_login"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView3"
+                    app:srcCompat="@drawable/ic_club" />
 
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>

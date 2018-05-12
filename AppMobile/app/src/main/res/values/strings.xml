@@ -16,5 +16,10 @@
     <string name="regis_validate">Enviando Información</string>
     <string name="regis_error">Por favor comprueba los datos</string>
     <string name="player_equipo">Club Donde Juega:</string>
+    <string name="player_name">Nombre Jugador</string>
+    <string name="server_error">No se pudo conectar con el servidor</string>
+    <string name="alert_msg">¿Está seguro de votar por este jugador?</string>
+    <string name="ok">Si</string>
+    <string name="cancel">No</string>
 
 </resources>

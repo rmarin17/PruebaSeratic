@@ -6,5 +6,6 @@
 
 
     <color name="iconInfo">#666</color>
+    <color name="waring">#DD2C00</color>
 
 </resources>
