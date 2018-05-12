@@ -2,17 +2,17 @@ package com.seratic.models;
 
 
 public class Usuario {    
-    private String cedula, nombre, apellido, usuario, contraseña, tipo, fecha;
+    private String cedula, nombre, apellido, usuario, clave, tipo, fecha;
 
     public Usuario() {
     }
 
-    public Usuario(String cedula, String nombre, String apellido, String usuario, String contraseña, String tipo, String fecha) {
+    public Usuario(String cedula, String nombre, String apellido, String usuario, String clave, String tipo, String fecha) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
-        this.contraseña = contraseña;
+        this.clave = clave;
         this.tipo = tipo;
         this.fecha = fecha;
     }
@@ -49,12 +49,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getClave() {
+        return clave;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public String getTipo() {
